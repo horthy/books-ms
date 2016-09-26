@@ -3,3 +3,9 @@ upstream books-ms {
     server {{.Address}}:{{.Port}};
     {{end}}
 }
+
+upstream authors-ms {
+    {{range service "books-ms" "any"}}
+    server {{.Address}}:{{.Port}};
+    {{end}}
+}
